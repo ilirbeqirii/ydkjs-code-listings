@@ -1,0 +1,14 @@
+{
+  "name": "ydkjs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "prepare": "husky install"
+  },
+  "author": "Ilir Beqiri",
+  "license": "ISC",
+  "devDependencies": {
+    "husky": "^7.0.0"
+  }
+}
