@@ -1,4 +1,5 @@
-// * The natural way to get the most out of Promises(trustable and composable) and generators(synchronous-looking async code) is to yield a Promise, and wire that Promise to control the generator's iterator.
+// * The natural way to get the most out of Promises(trustable and composable) and generators(synchronous-looking async code) is to yield a Promise, 
+// * and wire that Promise to control the generator's iterator.
 
 function request(url) {
     return new Promise((resolve, reject) => setTimeout(() => {
@@ -14,8 +15,8 @@ function foo(x, y) {
 
 function* main() {
     try {
-        var text = yield foo(11, 31);
-        console.log(text);
+        var text = yield foo(11, 31); // if an error is thrown (2) that it is like is beign thrown here
+        console.log(text); // when (1) called the 'text' variable is undeefined cause promise still has not been resolved
     } catch (error) {
         console.log(error);
     }
@@ -33,9 +34,11 @@ p.then(
         it.next(text);
     },
     function (err) {
-        it.throw(err);
+        it.throw(err); // ... (2)
     }
 );
+
+// it.next(); // ... (1)
 
 // ? ES7: async and await? : The proposal essentially codifies support for the pattern we've already derived, into a syntactic mechanism: 
 // ? combining Promises with sync-looking flow control code. That's the best of both worlds combined, to effectively address practically all of the major concerns we outlined with callbacks.
